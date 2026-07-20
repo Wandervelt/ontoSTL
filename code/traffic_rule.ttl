@@ -1,0 +1,39 @@
+@prefix stl: <http://stl#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix req: <http://requirements#> .
+
+# Original formula: G[0, inf] ( p1 || pressure = 864.51 => p2 )
+
+req:requirement a stl:STLFormula ;
+    stl:hasOperator stl:Globally ;
+    stl:hasTimeInterval [
+        a time:Interval ;
+        time:hasBeginning [ a time:Instant ; time:inTimePosition [ time:numericPosition "0.0"^^xsd:double ; time:hasTRS time:unitSecond ] ] ;
+        time:hasEnd [ a time:Instant ; time:inTimePosition [ time:numericPosition "INF"^^xsd:double ; time:hasTRS time:unitSecond ] ]
+    ] ;
+    stl:hasRightOperand [
+        a stl:STLFormula ;
+        stl:hasOperator stl:Or ;
+        stl:hasLeftOperand [
+            a stl:STLFormula ;
+            stl:hasOperator stl:Atomic ;
+            stl:hasOperand "p1"
+        ] ;
+        stl:hasRightOperand [
+            a stl:STLFormula ;
+            stl:hasOperator stl:Implies ;
+            stl:hasLeftOperand [
+                a stl:STLFormula ;
+                stl:hasOperator stl:Equal ;
+                stl:hasLeftOperand "pressure" ;
+                stl:hasRightOperand "864.51"^^xsd:double
+            ] ;
+            stl:hasRightOperand [
+                a stl:STLFormula ;
+                stl:hasOperator stl:Atomic ;
+                stl:hasOperand "p2"
+            ]
+        ]
+    ] .
