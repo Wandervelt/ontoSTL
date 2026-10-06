@@ -1,4 +1,12 @@
-# STL-to-Ontology Replication Repository
+## Status and planned updates
+The current implementation supports STL–OWL transformation and canonicalization within the supported STL fragment. See the documentation below for usage and supported features.
+
+Several updates are planned but have not yet been implemented:
+
+- Update to how time is handled in the Ontology to reflect OWL-Time correctly.
+- Difference between inclusive and non-inclusive temporal constraints in the Ontology. 
+
+These updates may change the implementation or extend its capabilities. This README will be updated as they are completed.
 
 ## Overview
 
